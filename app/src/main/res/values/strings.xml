@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Jogo Da Velha</string>
+
+    <string name="txtjogador1">Jogador 1</string>
+    <string name="txtjogador2">Jogador 2</string>
+
+    <string name="txtVezjogador1">Vez do Jogador 1</string>
+    <string name="txtVezjogador2">Vez do Jogador 2</string>
+</resources>
