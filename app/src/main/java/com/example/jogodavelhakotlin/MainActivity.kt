@@ -1,10 +1,15 @@
 package com.example.jogodavelhakotlin
 
+import android.app.Dialog
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import cn.pedant.SweetAlert.SweetAlertDialog
 import kotlinx.android.synthetic.main.activity_main.*
@@ -15,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        BtnReinicar.setOnClickListener(){
+        btnReinicia.setOnClickListener{
             reinicairJogo()
         }
     }
@@ -53,13 +58,13 @@ class MainActivity : AppCompatActivity() {
     fun playGame(boxId:String, btnSelect:ImageView){
         if (activePlayer==1){
             txtvez.text="Vez do Jogador 2"
-            btnSelect.setImageResource(R.drawable.letra_x)
+            btnSelect.setImageResource(R.drawable.cross)
             player1.add(boxId)
             activePlayer=2
         }
         else{
             txtvez.text= "Vez do Jogador 1"
-            btnSelect.setImageResource(R.drawable.letra_o)
+            btnSelect.setImageResource(R.drawable.letter_o)
             player2.add(boxId)
             activePlayer=1
         }
@@ -88,9 +93,7 @@ class MainActivity : AppCompatActivity() {
             (player1.contains("A1")&& player1.contains("B2") && player1.contains("C3")) ||
             (player1.contains("C1")&& player1.contains("B2") && player1.contains("C3"))){
             winer=1
-
-            imgVencedor.setImageResource(R.drawable.letra_x)
-            txtQuemGanhou.setText("Jogador 1 Ganhou!!")
+            vitoria("Jogador 1 Ganhou!!")
         }
 
         //se jogador 2 ganhar
@@ -106,34 +109,41 @@ class MainActivity : AppCompatActivity() {
             (player2.contains("A1")&& player2.contains("B2") && player2.contains("C3")) ||
             (player2.contains("C1")&& player2.contains("B2") && player2.contains("C3"))){
             winer=2
-
-            imgVencedor.setImageResource(R.drawable.letra_o)
-            txtQuemGanhou.setText("Jogador 2 Ganhou!!")
+            vitoria("Jogador 2 Ganhou!!")
         }
 
-        if(contRodadas==9){
-            vitoria()
+        if(winer==-1 && contRodadas==9){
+            vitoria("Deu Velha")
 
-            imgVencedor.setImageResource(R.drawable.logojogavelha)
-            txtQuemGanhou.setText("Empatou!")
         }
 
-        if (winer!=-1){
-            vitoria()
-        }
     }
 
-    fun vitoria(){
+
+    fun vitoria(QuemGanhou:String){
         player1.clear()
         player2.clear()
 
-        telajogo.visibility = View.INVISIBLE
-        telaVencedor.visibility = View.VISIBLE
+        val dialogBinding=layoutInflater.inflate(R.layout.style_dialog, null)
+        val dialog=Dialog(this)
 
+        dialog.setContentView(dialogBinding)
+        dialog.setCancelable(true)
+        dialog.window?.setBackgroundDrawableResource(R.drawable.round_corner);
+        dialog.show()
 
+        val txtQuemGanhou =dialogBinding.findViewById<TextView>(R.id.textView)
+        txtQuemGanhou.setText(QuemGanhou)
+
+        val btnReinicia= dialogBinding.findViewById<Button>(R.id.btn_login)
+        btnReinicia.setOnClickListener{
+            reinicairJogo()
+        }
     }
 
     fun reinicairJogo(){
+        val dialog=Dialog(this)
+        dialog.dismiss()
         finish()
         startActivity(getIntent())
     }

@@ -4,15 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/azulFundo"
     tools:context=".MainActivity">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/telajogo"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
 
     <TextView
         android:id="@+id/txtjogador1"
@@ -24,13 +17,13 @@
 
     <ImageView
         android:id="@+id/imgeX"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="25dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="35dp"
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtjogador1"
-        app:srcCompat="@drawable/letra_x" />
+        app:srcCompat="@drawable/cross" />
 
     <TextView
         android:id="@+id/txtjogador2"
@@ -42,13 +35,13 @@
 
     <ImageView
         android:id="@+id/imgeO"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginEnd="25dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="40dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtjogador2"
-        app:srcCompat="@drawable/letra_o" />
+        app:srcCompat="@drawable/letter_o" />
 
     <TextView
         android:id="@+id/txtvez"
@@ -58,125 +51,99 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgeX"/>
 
-    <TableLayout
-        android:id="@+id/tableLayout"
-        android:layout_width="match_parent"
+        <TableLayout
+            android:id="@+id/tableLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:divider="@drawable/linha_horizontal"
+            android:gravity="center"
+            android:showDividers="middle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtvez">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@drawable/linha_vertical"
+                android:gravity="center"
+                android:showDividers="middle">
+
+                <ImageView
+                    android:id="@+id/btn_A1"
+                    style="@style/btnBoxPadrao"
+                    android:onClick="btnClick" />
+
+                <ImageView
+                    android:id="@+id/btn_A2"
+                    style="@style/btnBoxPadrao"
+                    android:onClick="btnClick" />
+
+                <ImageView
+                    android:id="@+id/btn_A3"
+                    style="@style/btnBoxPadrao"
+                    android:onClick="btnClick" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@drawable/linha_vertical"
+                android:gravity="center"
+                android:showDividers="middle">
+
+                <ImageView
+                    android:id="@+id/btn_B1"
+                    style="@style/btnBoxPadrao"
+                    android:onClick="btnClick" />
+
+                <ImageView
+                    android:id="@+id/btn_B2"
+                    style="@style/btnBoxPadrao"
+                    android:onClick="btnClick" />
+
+                <ImageView
+                    android:id="@+id/btn_B3"
+                    style="@style/btnBoxPadrao"
+                    android:onClick="btnClick" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@drawable/linha_vertical"
+                android:gravity="center"
+                android:showDividers="middle">
+
+                <ImageView
+                    android:id="@+id/btn_C1"
+                    style="@style/btnBoxPadrao"
+                    android:onClick="btnClick" />
+
+                <ImageView
+                    android:id="@+id/btn_C2"
+                    style="@style/btnBoxPadrao"
+                    android:onClick="btnClick" />
+
+                <ImageView
+                    android:id="@+id/btn_C3"
+                    style="@style/btnBoxPadrao"
+                    android:onClick="btnClick" />
+            </TableRow>
+        </TableLayout>
+
+    <Button
+        android:id="@+id/btnReinicia"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:divider="@drawable/menos_linha_reta_horizontal"
-        android:gravity="center"
-        android:showDividers="middle"
+        android:padding="12dp"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="@color/azulEscuro"
+        android:text="Reiniciar"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtvez">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:divider="@android:drawable/status_bar_item_background"
-            android:gravity="center"
-            android:showDividers="middle">
-
-            <ImageView
-                android:id="@+id/btn_A1"
-                style="@style/btnBoxPadrao"
-                android:onClick="btnClick" />
-
-            <ImageView
-                android:id="@+id/btn_A2"
-                style="@style/btnBoxPadrao"
-                android:onClick="btnClick" />
-
-            <ImageView
-                android:id="@+id/btn_A3"
-                style="@style/btnBoxPadrao"
-                android:onClick="btnClick" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:divider="@android:drawable/status_bar_item_background"
-            android:gravity="center"
-            android:showDividers="middle">
-
-            <ImageView
-                android:id="@+id/btn_B1"
-                style="@style/btnBoxPadrao"
-                android:onClick="btnClick" />
-
-            <ImageView
-                android:id="@+id/btn_B2"
-                style="@style/btnBoxPadrao"
-                android:onClick="btnClick" />
-
-            <ImageView
-                android:id="@+id/btn_B3"
-                style="@style/btnBoxPadrao"
-                android:onClick="btnClick" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:divider="@android:drawable/status_bar_item_background"
-            android:gravity="center"
-            android:showDividers="middle">
-
-            <ImageView
-                android:id="@+id/btn_C1"
-                style="@style/btnBoxPadrao"
-                android:onClick="btnClick" />
-
-            <ImageView
-                android:id="@+id/btn_C2"
-                style="@style/btnBoxPadrao"
-                android:onClick="btnClick" />
-
-            <ImageView
-                android:id="@+id/btn_C3"
-                style="@style/btnBoxPadrao"
-                android:onClick="btnClick" />
-        </TableRow>
-    </TableLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/telaVencedor"
-        android:visibility="invisible"
-        android:background="@color/teste"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <ImageView
-            android:id="@+id/imgVencedor"
-            android:layout_width="wrap_content"
-            android:layout_height="150dp"
-            android:layout_marginTop="-160dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/letra_x" />
-
-        <TextView
-            android:id="@+id/txtQuemGanhou"
-            style="@style/txtPadrao"
-            android:layout_marginTop="50dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgVencedor" />
-
-        <TextView
-            android:id="@+id/BtnReinicar"
-            style="@style/txtPadrao"
-            android:text="Reiniciar jogo"
-            android:layout_marginTop="90dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtQuemGanhou" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
