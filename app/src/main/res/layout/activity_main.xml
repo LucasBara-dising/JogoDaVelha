@@ -23,7 +23,8 @@
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtjogador1"
-        app:srcCompat="@drawable/cross" />
+        app:srcCompat="@drawable/cross"
+        android:contentDescription="@string/txtjogador1" />
 
     <TextView
         android:id="@+id/txtjogador2"
@@ -41,7 +42,8 @@
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtjogador2"
-        app:srcCompat="@drawable/letter_o" />
+        app:srcCompat="@drawable/letter_o"
+        android:contentDescription="@string/txtjogador2" />
 
     <TextView
         android:id="@+id/txtvez"
@@ -73,17 +75,20 @@
                 <ImageView
                     android:id="@+id/btn_A1"
                     style="@style/btnBoxPadrao"
-                    android:onClick="btnClick" />
+                    android:onClick="btnClick"
+                    android:contentDescription="@string/txtBoxGame"/>
 
                 <ImageView
                     android:id="@+id/btn_A2"
                     style="@style/btnBoxPadrao"
-                    android:onClick="btnClick" />
+                    android:onClick="btnClick"
+                    android:contentDescription="@string/txtBoxGame"/>
 
                 <ImageView
                     android:id="@+id/btn_A3"
                     style="@style/btnBoxPadrao"
-                    android:onClick="btnClick" />
+                    android:onClick="btnClick"
+                    android:contentDescription="@string/txtBoxGame"/>
             </TableRow>
 
             <TableRow
@@ -96,17 +101,20 @@
                 <ImageView
                     android:id="@+id/btn_B1"
                     style="@style/btnBoxPadrao"
-                    android:onClick="btnClick" />
+                    android:onClick="btnClick"
+                    android:contentDescription="@string/txtBoxGame"/>
 
                 <ImageView
                     android:id="@+id/btn_B2"
                     style="@style/btnBoxPadrao"
-                    android:onClick="btnClick" />
+                    android:onClick="btnClick"
+                    android:contentDescription="@string/txtBoxGame"/>
 
                 <ImageView
                     android:id="@+id/btn_B3"
                     style="@style/btnBoxPadrao"
-                    android:onClick="btnClick" />
+                    android:onClick="btnClick"
+                    android:contentDescription="@string/txtBoxGame"/>
             </TableRow>
 
             <TableRow
@@ -119,17 +127,20 @@
                 <ImageView
                     android:id="@+id/btn_C1"
                     style="@style/btnBoxPadrao"
-                    android:onClick="btnClick" />
+                    android:onClick="btnClick"
+                    android:contentDescription="@string/txtBoxGame"/>
 
                 <ImageView
                     android:id="@+id/btn_C2"
                     style="@style/btnBoxPadrao"
-                    android:onClick="btnClick" />
+                    android:onClick="btnClick"
+                    android:contentDescription="@string/txtBoxGame"/>
 
                 <ImageView
                     android:id="@+id/btn_C3"
                     style="@style/btnBoxPadrao"
-                    android:onClick="btnClick" />
+                    android:onClick="btnClick"
+                    android:contentDescription="@string/txtBoxGame"/>
             </TableRow>
         </TableLayout>
 
@@ -137,10 +148,10 @@
         android:id="@+id/btnReinicia"
         android:layout_width="260dp"
         android:layout_height="wrap_content"
-        android:padding="12dp"
-        android:textColor="#FFFFFF"
         android:backgroundTint="@color/azulEscuro"
-        android:text="Reiniciar"
+        android:padding="12dp"
+        android:text="@string/txtReset"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

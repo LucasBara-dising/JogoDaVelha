@@ -6,4 +6,8 @@
 
     <string name="txtVezjogador1">Vez do Jogador 1</string>
     <string name="txtVezjogador2">Vez do Jogador 2</string>
+    <string name="txtNovoJogo">Novo Jogo</string>
+    <string name="txtGanhou">Voce ganhaou</string>
+    <string name="txtBoxGame">Box de Jogo</string>
+    <string name="txtReset">Reiniciar</string>
 </resources>

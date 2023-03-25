@@ -1,17 +1,13 @@
 package com.example.jogodavelhakotlin
 
+import android.annotation.SuppressLint
 import android.app.Dialog
-import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import cn.pedant.SweetAlert.SweetAlertDialog
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -55,6 +51,7 @@ class MainActivity : AppCompatActivity() {
     //turnos
     var activePlayer=1
 
+    @SuppressLint("SetTextI18n")
     fun playGame(boxId:String, btnSelect:ImageView){
         if (activePlayer==1){
             txtvez.text="Vez do Jogador 2"
@@ -72,11 +69,11 @@ class MainActivity : AppCompatActivity() {
         btnSelect.isEnabled=false
 
         //toda vez que tiver uma jogada verifica o ganhador
-        CheckWiner()
+        checkWiner()
     }
     var contRodadas=0
     //checa quem ganhou
-    fun CheckWiner(){
+    fun checkWiner(){
         var winer=-1
         contRodadas++
 
@@ -91,7 +88,7 @@ class MainActivity : AppCompatActivity() {
             (player1.contains("A3")&& player1.contains("B3") && player1.contains("C3")) ||
             //diagonal
             (player1.contains("A1")&& player1.contains("B2") && player1.contains("C3")) ||
-            (player1.contains("C1")&& player1.contains("B2") && player1.contains("C3"))){
+            (player1.contains("C1")&& player1.contains("B2") && player1.contains("A3"))){
             winer=1
             vitoria("Jogador 1 Ganhou!!")
         }
@@ -107,7 +104,7 @@ class MainActivity : AppCompatActivity() {
             (player2.contains("A3")&& player2.contains("B3") && player2.contains("C3")) ||
             //diagonal
             (player2.contains("A1")&& player2.contains("B2") && player2.contains("C3")) ||
-            (player2.contains("C1")&& player2.contains("B2") && player2.contains("C3"))){
+            (player2.contains("C1")&& player2.contains("B2") && player2.contains("A3"))){
             winer=2
             vitoria("Jogador 2 Ganhou!!")
         }
@@ -129,7 +126,7 @@ class MainActivity : AppCompatActivity() {
 
         dialog.setContentView(dialogBinding)
         dialog.setCancelable(true)
-        dialog.window?.setBackgroundDrawableResource(R.drawable.round_corner);
+        dialog.window?.setBackgroundDrawableResource(R.drawable.round_corner)
         dialog.show()
 
         val txtQuemGanhou =dialogBinding.findViewById<TextView>(R.id.textView)
