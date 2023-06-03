@@ -48,7 +48,7 @@
     <TextView
         android:id="@+id/txtvez"
         style="@style/txtPadrao"
-        android:text="@string/txtVezjogador1"
+        android:text="@string/txtSuaVez"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgeX"/>

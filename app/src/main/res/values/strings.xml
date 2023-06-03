@@ -3,9 +3,16 @@
 
     <string name="txtjogador1">Jogador 1</string>
     <string name="txtjogador2">Jogador 2</string>
+    <string name="txtEstiloGame">Qual o modo de Jogo?</string>
+
+    <string name="txt2Players">2 Jogadores</string>
+    <string name="txtGameIa">Contra Máquina</string>
 
     <string name="txtVezjogador1">Vez do Jogador 1</string>
     <string name="txtVezjogador2">Vez do Jogador 2</string>
+    <string name="txtVezMaquina">Vez Da Máquina</string>
+    <string name="txtSuaVez">Sua Vez</string>
+
     <string name="txtNovoJogo">Novo Jogo</string>
     <string name="txtGanhou">Voce ganhaou</string>
     <string name="txtBoxGame">Box de Jogo</string>
