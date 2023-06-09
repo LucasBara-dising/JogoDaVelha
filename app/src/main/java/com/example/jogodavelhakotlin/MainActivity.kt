@@ -113,7 +113,7 @@ class MainActivity : AppCompatActivity() {
     private fun playGameIA(boxId:String?, btnSelect: ImageView?){
         //jogador
         if (activePlayer==1 && boxId!=null && btnSelect!=null){
-            txtvez.text=R.string.txtVezMaquina.toString()
+            txtvez.text="Vez da Máquina"
             btnSelect.setImageResource(R.drawable.letter_o)
             btnSelect.isEnabled=false
             player1.add(boxId)
@@ -122,7 +122,7 @@ class MainActivity : AppCompatActivity() {
         }
         //máquina
         if (activePlayer==2){
-            txtvez.text=R.string.txtSuaVez.toString()
+            txtvez.setText(R.string.txtSuaVez)
             //retorna uma box pro jogo
             maquinaJoga()
             activePlayer=1
@@ -176,6 +176,7 @@ class MainActivity : AppCompatActivity() {
 
     fun maquinaJoga(){
         //primneira jogada nos cantos
+        Log.e("Arry", player2.size.toString())
         if(player2.isEmpty()){
             val FirstGame = when((1..3).random()) {
                 1 -> "A1"
@@ -192,7 +193,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        else  if(player2.size>1) {
+        /*else  if(player2.size>1) {
             //gera uma caixa verifica se pode, se não poder tenta denovo
             val jogadaMqn=geraJogada()
 
@@ -202,21 +203,82 @@ class MainActivity : AppCompatActivity() {
             else{
                 maquinaJoga()
             }
-        }
+        }*/
         //verifica se pode jogar no maio, se não poder tenta denovo
         else if(player2.size==1 && checkClick("B2")==true) {
             selectBoxCross("B2")
         }
-        else {
-            val jogadaMqn=geraJogada()
-            if (checkClick(jogadaMqn)==true){
-                selectBoxCross(jogadaMqn)
+
+        //define jogadas para ganhar
+        else if (player2.size>1){
+            //-----ganha se jogra nas pontas-----
+            if((player2.contains("A2")&& player2.contains("A3")) ||
+                (player2.contains("B1")&& player2.contains("C1") ||
+                (player2.contains("B2")&& player2.contains("C3"))) && checkClick("A1")){
+                    selectBoxCross("A1")
+                }
+            else if((player2.contains("A1")&& player2.contains("A2")) ||
+                (player2.contains("B3")&& player2.contains("C3")) ||
+                (player2.contains("B2")&& player2.contains("C1"))&& checkClick("A3")){
+                selectBoxCross("A3")
             }
-            else{
-                maquinaJoga()
+
+            else if((player2.contains("A1")&& player2.contains("B1")) ||
+                (player2.contains("C2")&& player2.contains("C3")) ||
+                (player2.contains("B2")&& player2.contains("A3")) && checkClick("C1")){
+                selectBoxCross("C1")
+            }
+
+            else if((player2.contains("A3")&& player2.contains("B3")) ||
+                (player2.contains("C1")&& player2.contains("C2"))  ||
+                (player2.contains("B2")&& player2.contains("A1"))&& checkClick("C3")){
+                selectBoxCross("C3")
+            }
+
+            //------------joga nos meios-----------
+            else if((player2.contains("A1")&& player2.contains("A3")) ||
+                (player2.contains("B2")&& player2.contains("C3")) && checkClick("A2")){
+                selectBoxCross("A2")
+            }
+            else if((player2.contains("A3")&& player2.contains("C3")) ||
+                (player2.contains("B1")&& player2.contains("B2"))&& checkClick("B3")){
+                selectBoxCross("B3")
+            }
+
+            else if((player2.contains("A2")&& player2.contains("B2")) ||
+                (player2.contains("C1")&& player2.contains("C3")) && checkClick("C2")){
+                selectBoxCross("C2")
+            }
+
+            else if((player2.contains("A1")&& player2.contains("C1")) ||
+                (player2.contains("B2")&& player2.contains("B3"))&& checkClick("B1")){
+                selectBoxCross("B1")
+            }
+
+            else {
+                Log.d("Jogada","Aleatoria")
+                val jogadaMqn=geraJogada()
+                if (checkClick(jogadaMqn)==true){
+                    selectBoxCross(jogadaMqn)
+                }
+                else{
+                    maquinaJoga()
+                }
+
             }
 
         }
+
+        else {
+            Log.d("Jogada", "Aleatoria")
+            val jogadaMqn = geraJogada()
+            if (checkClick(jogadaMqn) == true) {
+                selectBoxCross(jogadaMqn)
+            } else {
+                maquinaJoga()
+            }
+        }
+
     }
 
     var contRodadas=0
@@ -238,7 +300,13 @@ class MainActivity : AppCompatActivity() {
             (player1.contains("A1")&& player1.contains("B2") && player1.contains("C3")) ||
             (player1.contains("C1")&& player1.contains("B2") && player1.contains("A3"))){
             winer=1
-            vitoria("Jogador 1 Ganhou!!")
+            if (modoGame.equals("maquina")){
+                    vitoria("Você Ganhou!!")
+                }
+            else{
+                vitoria("Jogador 1 Ganhou!!")
+            }
+
         }
 
         //se jogador 2 ganhar
@@ -259,7 +327,6 @@ class MainActivity : AppCompatActivity() {
 
         if(winer==-1 && contRodadas==9){
             vitoria("Deu Velha")
-
         }
 
     }
